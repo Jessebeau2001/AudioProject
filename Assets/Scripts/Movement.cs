@@ -7,6 +7,9 @@ public class Movement : MonoBehaviour
     private Rigidbody rb;
     public float movementSpeed = 0.01f;
     public float rotationSpeed = 0.5f;
+
+    public bool canTurn = true;
+    public bool canMove = true;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -14,8 +17,11 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-       BasicMovment();
-       Turning();
+        if (canMove)
+            BasicMovment();
+        
+        if (canTurn)
+            Turning();
     }
 
     private void Turning() {
@@ -27,7 +33,8 @@ public class Movement : MonoBehaviour
         if  (Input.GetKey(KeyCode.RightArrow))
             rotate += new Vector3(0, 1, 0);
         
-        transform.Rotate(rotate * rotationSpeed);
+        //transform.Rotate(rotate * rotationSpeed);
+        rb.AddTorque(rotate * rotationSpeed);
         rotate *= 0;
     }
     private void BasicMovment() {
