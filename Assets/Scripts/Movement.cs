@@ -5,8 +5,8 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     private Rigidbody rb;
-    public float movementSpeed = 0.01f;
-    public float rotationSpeed = 0.5f;
+    public float movementModifier = 0.01f;
+    public float turnModifier = 0.5f;
 
     public bool canTurn = true;
     public bool canMove = true;
@@ -21,10 +21,25 @@ public class Movement : MonoBehaviour
             BasicMovment();
         
         if (canTurn)
-            Turning();
+            StaticTurning();
+            //RigidTurning();
     }
 
-    private void Turning() {
+    private void StaticTurning() {
+        Vector3 rotate = new Vector3();
+
+        if  (Input.GetKey(KeyCode.LeftArrow))
+            rotate += new Vector3(0, -1, 0);
+
+        if  (Input.GetKey(KeyCode.RightArrow))
+            rotate += new Vector3(0, 1, 0);
+
+        transform.Rotate(rotate * turnModifier);
+
+        rotate *= 0;
+    }
+
+    private void RigidTurning() {
         Vector3 rotate = new Vector3();
 
         if  (Input.GetKey(KeyCode.LeftArrow))
@@ -34,7 +49,7 @@ public class Movement : MonoBehaviour
             rotate += new Vector3(0, 1, 0);
         
         //transform.Rotate(rotate * rotationSpeed);
-        rb.AddTorque(rotate * rotationSpeed);
+        rb.AddTorque(rotate * turnModifier);
         rotate *= 0;
     }
     private void BasicMovment() {
@@ -55,7 +70,7 @@ public class Movement : MonoBehaviour
 
         force.Normalize();
         //rb.AddForce(force * movementSpeed);
-        rb.AddRelativeForce(force * movementSpeed);
+        rb.AddRelativeForce(force * movementModifier);
         force *= 0;
     }
 }

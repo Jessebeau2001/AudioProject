@@ -11,18 +11,12 @@ public class WallBump : MonoBehaviour
     void Start()
     {
         //audioData = GetComponent<AudioSource>();
-    }
-
-    void Update()
-    {
-
-    }
-        
+    }   
 
     void OnCollisionEnter(Collision collision) {
         if (collision.collider.tag == "ddddddd")
             return;
-            
+
         ContactPoint contact = collision.contacts[0];
         Vector3 direction = contact.point - transform.position;
         direction.y = 0; //Ignore verticality
@@ -34,5 +28,5 @@ public class WallBump : MonoBehaviour
 // Check for collision with wall    | Check
 // Check for collision points       | Check
 // Draw vector towards point        | Check
-// Nomrlalize it
-// Play directional audio file at end point of vector
+// Nomrlalize it                    | Check
+// Play directional audio file at end point of vector | Check
