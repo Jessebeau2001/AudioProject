@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     private Rigidbody rb;
+    
     public float movementModifier = 0.01f;
     public float turnModifier = 0.5f;
 
@@ -53,6 +54,7 @@ public class Movement : MonoBehaviour
         rb.AddTorque(rotate * turnModifier);
         rotate *= 0;
     }
+
     private void BasicMovment() {
         Vector3 force = new Vector3();
 
@@ -80,5 +82,9 @@ public class Movement : MonoBehaviour
         force.Normalize();
         rb.AddRelativeForce(force * movementModifier);
         force *= 0;
+    }
+
+    public void ToggleMovement() {
+        canMove = !canMove;
     }
 }
