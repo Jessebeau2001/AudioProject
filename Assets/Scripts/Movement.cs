@@ -18,7 +18,8 @@ public class Movement : MonoBehaviour
     void Update()
     {
         if (canMove)
-            BasicMovment();
+            ControllerMovement();
+            //BasicMovment();
         
         if (canTurn)
             StaticTurning();
@@ -53,7 +54,6 @@ public class Movement : MonoBehaviour
         rotate *= 0;
     }
     private void BasicMovment() {
-        //Vector3 force = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         Vector3 force = new Vector3();
 
         if (Input.GetKey(KeyCode.W)) 
@@ -70,6 +70,14 @@ public class Movement : MonoBehaviour
 
         force.Normalize();
         //rb.AddForce(force * movementSpeed);
+        rb.AddRelativeForce(force * movementModifier);
+        force *= 0;
+    }
+
+    private void ControllerMovement() {
+        Vector3 force = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+
+        force.Normalize();
         rb.AddRelativeForce(force * movementModifier);
         force *= 0;
     }
