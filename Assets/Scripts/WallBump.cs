@@ -30,3 +30,5 @@ public class WallBump : MonoBehaviour
 // Draw vector towards point        | Check
 // Nomrlalize it                    | Check
 // Play directional audio file at end point of vector | Check
+
+//make is so bumping into different objects make different sounds for door etc

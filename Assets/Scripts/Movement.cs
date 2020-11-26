@@ -15,11 +15,11 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (canMove)
-            //ControllerMovement();
-            BasicMovment();
+            ControllerMovement();
+            //BasicMovment();
         
         if (canTurn)
             StaticTurning();
@@ -79,7 +79,7 @@ public class Movement : MonoBehaviour
         Vector3 force = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 
         force.Normalize();
-        rb.AddRelativeForce(force * movementModifier);
+        rb.AddRelativeForce(force * movementModifier * Time.deltaTime);
         force *= 0;
     }
 
