@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 abstract class PuzzleAbstract : MonoBehaviour, IPuzzle
 {
+    private bool playerInTrigger = false;
     private Collider _trigger;
     public Collider trigger { get { return _trigger; } private set { _trigger = value; }}
     private GameObject _player;  //Singletons????? example in Keep
@@ -19,7 +20,21 @@ abstract class PuzzleAbstract : MonoBehaviour, IPuzzle
     }
 
     void Update() {
-        
+        if (Input.GetKey(KeyCode.Space) && playerInTrigger == true) {
+            
+        }
+    }
+
+    void OnTriggerEnter(Collider col) {
+        if (col.tag == "Player") {
+            playerInTrigger = true;
+        }
+    }
+
+    void OnTriggerExit(Collider col) {
+        if (col.tag == "Player") {
+            playerInTrigger = false;
+        }
     }
 
     public void StartPuzzle() {

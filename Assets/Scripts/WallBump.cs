@@ -5,23 +5,31 @@ using UnityEngine;
 //[RequireComponent(typeof(AudioSource))]
 public class WallBump : MonoBehaviour
 {
-    public string wallTag;
     public float distanceMod = 4f;
     public bool audibleBumps = true;
-    public AudioSource src;
+    public AudioSource wallAudio;
+    public AudioSource doorAudio;
     void Start()
     {
         //audioData = GetComponent<AudioSource>();
     }   
 
     void OnCollisionEnter(Collision collision) {
-        if (collision.collider.tag == wallTag) {
-            ContactPoint contact = collision.contacts[0];
-            Vector3 direction = contact.point - transform.position;
-            direction.y = 0; //Ignore verticality
-            direction.Normalize();
-            Debug.DrawRay(transform.position, direction * distanceMod);
-            AudioSource.PlayClipAtPoint(src.clip, transform.position + (direction * distanceMod));
+        ContactPoint contact = collision.contacts[0];
+        Vector3 direction = contact.point - transform.position;
+        direction.y = 0; //Ignore verticality
+        direction.Normalize();
+        Debug.DrawRay(transform.position, direction * distanceMod);
+        
+        //for now audio sources are hardcoded here instead of tied to the object you bounce into NEED TO CHANGE THIS LATER (Something like other.GetComponent<AudioSource>.clip)
+        switch (collision.collider.tag) {
+            case "Wall":
+                AudioSource.PlayClipAtPoint(wallAudio.clip, transform.position + (direction * distanceMod));
+                break;
+            case "Door":
+                AudioSource.PlayClipAtPoint(doorAudio.clip, transform.position + (direction * distanceMod));
+                break;
+
         }
     }
 }
