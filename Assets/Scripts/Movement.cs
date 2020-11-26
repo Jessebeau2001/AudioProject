@@ -8,7 +8,6 @@ public class Movement : MonoBehaviour
     
     public float movementModifier = 0.01f;
     public float turnModifier = 0.5f;
-
     public bool canTurn = true;
     public bool canMove = true;
     void Start()
@@ -19,8 +18,8 @@ public class Movement : MonoBehaviour
     void Update()
     {
         if (canMove)
-            ControllerMovement();
-            //BasicMovment();
+            //ControllerMovement();
+            BasicMovment();
         
         if (canTurn)
             StaticTurning();
