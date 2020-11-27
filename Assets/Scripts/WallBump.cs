@@ -9,6 +9,7 @@ public class WallBump : MonoBehaviour
     public bool audibleBumps = true;
     public AudioSource wallAudio;
     public AudioSource doorAudio;
+    public AudioSource bedAudio;
     void Start()
     {
         //audioData = GetComponent<AudioSource>();
@@ -28,6 +29,9 @@ public class WallBump : MonoBehaviour
                 break;
             case "Door":
                 AudioSource.PlayClipAtPoint(doorAudio.clip, transform.position + (direction * distanceMod));
+                break;
+            case "Bed":
+                AudioSource.PlayClipAtPoint(bedAudio.clip, transform.position + (direction * distanceMod));
                 break;
 
         }
