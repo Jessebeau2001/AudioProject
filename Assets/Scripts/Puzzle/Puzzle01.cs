@@ -3,6 +3,8 @@ using UnityEngine;
 
 class Puzzle01 : PuzzleAbstract
 {
+    public AudioSource locked;
+    public AudioSource unlocked;
     bool[] keyStates = new bool[3]; //should read steps int but cant cuz of some BS
     KeyCode[] keys = new KeyCode[4];
     public override int steps { get { return steps; } set { steps = 4; } } //set to one because needs to be variable for every puzzle
@@ -22,10 +24,12 @@ class Puzzle01 : PuzzleAbstract
         if (currentStep >= 4) { 
             Debug.Log("Well done, you completed the pzuzzle");
             Completed();
+            unlocked.Play();
             //PUZZLE COMPLETE CODE HERE
         } else if (Input.GetKeyDown(keys[currentStep])) {
             currentStep++;
             Debug.Log("Correct next should be: "  + currentStep);
+            locked.Play();
         } else if (Input.anyKeyDown) {
             Debug.Log("Oops, thats a wrong one there mate should be " + currentStep + " / " + keys[currentStep]);
             currentStep = 0;
