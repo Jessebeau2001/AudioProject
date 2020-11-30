@@ -7,9 +7,9 @@ public class WallBump : MonoBehaviour
 {
     public float distanceMod = 4f;
     public bool audibleBumps = true;
-    public AudioSource wallAudio;
-    public AudioSource doorAudio;
-    public AudioSource bedAudio;
+    public AudioClip wallAudio;
+    public AudioClip doorAudio;
+    public AudioClip bedAudio;
     void Start()
     {
         //audioData = GetComponent<AudioSource>();
@@ -25,13 +25,13 @@ public class WallBump : MonoBehaviour
         //for now audio sources are hardcoded here instead of tied to the object you bounce into NEED TO CHANGE THIS LATER (Something like other.GetComponent<AudioSource>.clip)
         switch (collision.collider.tag) {
             case "Wall":
-                AudioSource.PlayClipAtPoint(wallAudio.clip, transform.position + (direction * distanceMod));
+                AudioSource.PlayClipAtPoint(wallAudio, transform.position + (direction * distanceMod));
                 break;
             case "Door":
-                AudioSource.PlayClipAtPoint(doorAudio.clip, transform.position + (direction * distanceMod));
+                AudioSource.PlayClipAtPoint(doorAudio, transform.position + (direction * distanceMod));
                 break;
             case "Bed":
-                AudioSource.PlayClipAtPoint(bedAudio.clip, transform.position + (direction * distanceMod));
+                AudioSource.PlayClipAtPoint(bedAudio, transform.position + (direction * distanceMod));
                 break;
 
         }

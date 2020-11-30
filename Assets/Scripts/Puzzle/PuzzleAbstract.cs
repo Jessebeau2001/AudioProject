@@ -16,7 +16,6 @@ abstract class PuzzleAbstract : MonoBehaviour, IPuzzle
     //int steps is dupilcate cuz needs to be changed in main class
 
     public virtual void Start() {
-        Debug.Log("Puzzle has started");
         player = GameObject.Find("Player");
         trigger = GetComponent<Collider>();
     }
@@ -32,7 +31,7 @@ abstract class PuzzleAbstract : MonoBehaviour, IPuzzle
 
     public abstract void Main();
 
-    void OnTriggerEnter(Collider col) {
+    public virtual void OnTriggerEnter(Collider col) {
         if (col.tag == "Player") {
             playerInTrigger = true;
         }
