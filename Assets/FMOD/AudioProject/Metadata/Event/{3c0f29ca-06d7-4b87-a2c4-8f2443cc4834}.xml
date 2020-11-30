@@ -173,7 +173,7 @@
 			<value>DirectBinaural</value>
 		</property>
 		<property name="value">
-			<value>false</value>
+			<value>true</value>
 		</property>
 	</object>
 	<object class="IntPluginParameter" id="{85b2a4c0-3761-4f42-a24a-a18fa282ba70}">

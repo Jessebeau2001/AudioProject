@@ -60,9 +60,9 @@ namespace FMODUnity
 
             if (GUI.Button(searchRect, new GUIContent(browseIcon, "Search"), buttonStyle))
             {
-                var eventBrowser = ScriptableObject.CreateInstance<EventBrowser>();
+                var eventBrowser = EventBrowser.CreateInstance<EventBrowser>();
                 
-                eventBrowser.ChooseEvent(property);
+                eventBrowser.SelectEvent(property);
                 var windowRect = position;
                 windowRect.position = GUIUtility.GUIToScreenPoint(windowRect.position);
                 windowRect.height = openRect.height + 1;
@@ -85,9 +85,9 @@ namespace FMODUnity
                 EventManager.EventFromPath(pathProperty.stringValue) != null
                 )
             {
-                EventBrowser.ShowWindow();
-                EventBrowser eventBrowser = EditorWindow.GetWindow<EventBrowser>();
-                eventBrowser.FrameEvent(pathProperty.stringValue);
+                EventBrowser.ShowEventBrowser();
+                var eventBrowser = EditorWindow.GetWindow<EventBrowser>();
+                eventBrowser.JumpToEvent(pathProperty.stringValue);
             }
             
             if (!string.IsNullOrEmpty(pathProperty.stringValue) && EventManager.EventFromPath(pathProperty.stringValue) != null)

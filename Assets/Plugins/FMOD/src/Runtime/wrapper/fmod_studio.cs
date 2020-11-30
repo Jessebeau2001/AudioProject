@@ -13,9 +13,17 @@ using System.Collections;
 
 namespace FMOD.Studio
 {
-    public partial class STUDIO_VERSION
+    public class STUDIO_VERSION
     {
-#if !UNITY_2017_4_OR_NEWER
+#if (UNITY_IPHONE || UNITY_TVOS || UNITY_SWITCH || UNITY_WEBGL) && !UNITY_EDITOR
+        public const string dll     = "__Internal";
+#elif (UNITY_PS4) && DEVELOPMENT_BUILD
+        public const string dll     = "libfmodstudioL";
+#elif (UNITY_PS4 || UNITY_WIIU || UNITY_PSP2) && !UNITY_EDITOR
+        public const string dll     = "libfmodstudio";
+#elif UNITY_EDITOR || ((UNITY_STANDALONE || UNITY_WSA || UNITY_ANDROID || UNITY_XBOXONE || UNITY_STADIA) && DEVELOPMENT_BUILD)
+        public const string dll     = "fmodstudioL";
+#else
         public const string dll     = "fmodstudio";
 #endif
     }
@@ -133,7 +141,6 @@ namespace FMOD.Studio
         AUTOMATIC_ELEVATION,
         AUTOMATIC_LISTENER_ORIENTATION,
         AUTOMATIC_SPEED,
-        AUTOMATIC_SPEED_ABSOLUTE,
         MAX
     }
 
@@ -143,7 +150,6 @@ namespace FMOD.Studio
         READONLY      = 0x00000001,
         AUTOMATIC     = 0x00000002,
         GLOBAL        = 0x00000004,
-        DISCRETE      = 0x00000008,
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -316,16 +322,15 @@ namespace FMOD.Studio
         SOUND_STOPPED            = 0x00004000,
         REAL_TO_VIRTUAL          = 0x00008000,
         VIRTUAL_TO_REAL          = 0x00010000,
-        START_EVENT_COMMAND      = 0x00020000,
 
         ALL                      = 0xFFFFFFFF,
     }
 
-    public delegate RESULT EVENT_CALLBACK(EVENT_CALLBACK_TYPE type, IntPtr _event, IntPtr parameters);
+    public delegate RESULT EVENT_CALLBACK(EVENT_CALLBACK_TYPE type, EventInstance _event, IntPtr parameters);
 
-    public delegate RESULT COMMANDREPLAY_FRAME_CALLBACK(IntPtr replay, int commandindex, float currenttime, IntPtr userdata);
-    public delegate RESULT COMMANDREPLAY_LOAD_BANK_CALLBACK(IntPtr replay, int commandindex, Guid bankguid, IntPtr bankfilename, LOAD_BANK_FLAGS flags, out IntPtr bank, IntPtr userdata);
-    public delegate RESULT COMMANDREPLAY_CREATE_INSTANCE_CALLBACK(IntPtr replay, int commandindex, IntPtr eventdescription, out IntPtr instance, IntPtr userdata);
+    public delegate RESULT COMMANDREPLAY_FRAME_CALLBACK(CommandReplay replay, int commandindex, float currenttime, IntPtr userdata);
+    public delegate RESULT COMMANDREPLAY_LOAD_BANK_CALLBACK(CommandReplay replay, int commandindex, Guid bankguid, StringWrapper bankfilename, LOAD_BANK_FLAGS flags, out Bank bank, IntPtr userdata);
+    public delegate RESULT COMMANDREPLAY_CREATE_INSTANCE_CALLBACK(CommandReplay replay, int commandindex, EventDescription eventdescription, out EventInstance instance, IntPtr userdata);
 
     public enum INSTANCETYPE : int
     {
@@ -562,19 +567,11 @@ namespace FMOD.Studio
         }
         public RESULT getListenerAttributes(int listener, out ATTRIBUTES_3D attributes)
         {
-            return FMOD_Studio_System_GetListenerAttributes(this.handle, listener, out attributes, IntPtr.Zero);
-        }
-        public RESULT getListenerAttributes(int listener, out ATTRIBUTES_3D attributes, out VECTOR attenuationposition)
-        {
-            return FMOD_Studio_System_GetListenerAttributes(this.handle, listener, out attributes, out attenuationposition);
+            return FMOD_Studio_System_GetListenerAttributes(this.handle, listener, out attributes);
         }
         public RESULT setListenerAttributes(int listener, ATTRIBUTES_3D attributes)
         {
-            return FMOD_Studio_System_SetListenerAttributes(this.handle, listener, ref attributes, IntPtr.Zero);
-        }
-        public RESULT setListenerAttributes(int listener, ATTRIBUTES_3D attributes, VECTOR attenuationposition)
-        {
-            return FMOD_Studio_System_SetListenerAttributes(this.handle, listener, ref attributes, ref attenuationposition);
+            return FMOD_Studio_System_SetListenerAttributes(this.handle, listener, ref attributes);
         }
         public RESULT getListenerWeight(int listener, out float weight)
         {
@@ -802,13 +799,9 @@ namespace FMOD.Studio
         [DllImport(STUDIO_VERSION.dll)]
         private static extern RESULT FMOD_Studio_System_SetNumListeners         (IntPtr system, int numlisteners);
         [DllImport(STUDIO_VERSION.dll)]
-        private static extern RESULT FMOD_Studio_System_GetListenerAttributes   (IntPtr system, int listener, out ATTRIBUTES_3D attributes, IntPtr zero);
+        private static extern RESULT FMOD_Studio_System_GetListenerAttributes   (IntPtr system, int listener, out ATTRIBUTES_3D attributes);
         [DllImport(STUDIO_VERSION.dll)]
-        private static extern RESULT FMOD_Studio_System_GetListenerAttributes   (IntPtr system, int listener, out ATTRIBUTES_3D attributes, out VECTOR attenuationposition);
-        [DllImport(STUDIO_VERSION.dll)]
-        private static extern RESULT FMOD_Studio_System_SetListenerAttributes   (IntPtr system, int listener, ref ATTRIBUTES_3D attributes, IntPtr zero);
-        [DllImport(STUDIO_VERSION.dll)]
-        private static extern RESULT FMOD_Studio_System_SetListenerAttributes   (IntPtr system, int listener, ref ATTRIBUTES_3D attributes, ref VECTOR attenuationposition);
+        private static extern RESULT FMOD_Studio_System_SetListenerAttributes   (IntPtr system, int listener, ref ATTRIBUTES_3D attributes);
         [DllImport(STUDIO_VERSION.dll)]
         private static extern RESULT FMOD_Studio_System_GetListenerWeight       (IntPtr system, int listener, out float weight);
         [DllImport(STUDIO_VERSION.dll)]
@@ -859,7 +852,6 @@ namespace FMOD.Studio
 
         public IntPtr handle;
 
-        public System(IntPtr ptr)   { this.handle = ptr; }
         public bool hasHandle()     { return this.handle != IntPtr.Zero; }
         public void clearHandle()   { this.handle = IntPtr.Zero; }
 
@@ -1116,9 +1108,8 @@ namespace FMOD.Studio
 
         public IntPtr handle;
 
-        public EventDescription(IntPtr ptr) { this.handle = ptr; }
-        public bool hasHandle()             { return this.handle != IntPtr.Zero; }
-        public void clearHandle()           { this.handle = IntPtr.Zero; }
+        public bool hasHandle()     { return this.handle != IntPtr.Zero; }
+        public void clearHandle()   { this.handle = IntPtr.Zero; }
 
         public bool isValid()
         {
@@ -1369,9 +1360,8 @@ namespace FMOD.Studio
 
         public IntPtr handle;
 
-        public EventInstance(IntPtr ptr) { this.handle = ptr; }
-        public bool hasHandle()          { return this.handle != IntPtr.Zero; }
-        public void clearHandle()        { this.handle = IntPtr.Zero; }
+        public bool hasHandle()     { return this.handle != IntPtr.Zero; }
+        public void clearHandle()   { this.handle = IntPtr.Zero; }
 
         public bool isValid()
         {
@@ -1504,7 +1494,6 @@ namespace FMOD.Studio
 
         public IntPtr handle;
 
-        public Bus(IntPtr ptr)      { this.handle = ptr; }
         public bool hasHandle()     { return this.handle != IntPtr.Zero; }
         public void clearHandle()   { this.handle = IntPtr.Zero; }
 
@@ -1578,7 +1567,6 @@ namespace FMOD.Studio
 
         public IntPtr handle;
 
-        public VCA(IntPtr ptr)      { this.handle = ptr; }
         public bool hasHandle()     { return this.handle != IntPtr.Zero; }
         public void clearHandle()   { this.handle = IntPtr.Zero; }
 
@@ -1847,7 +1835,6 @@ namespace FMOD.Studio
 
         public IntPtr handle;
 
-        public Bank(IntPtr ptr)     { this.handle = ptr; }
         public bool hasHandle()     { return this.handle != IntPtr.Zero; }
         public void clearHandle()   { this.handle = IntPtr.Zero; }
 
@@ -2027,9 +2014,8 @@ namespace FMOD.Studio
 
         public IntPtr handle;
 
-        public CommandReplay(IntPtr ptr) { this.handle = ptr; }
-        public bool hasHandle()          { return this.handle != IntPtr.Zero; }
-        public void clearHandle()        { this.handle = IntPtr.Zero; }
+        public bool hasHandle()     { return this.handle != IntPtr.Zero; }
+        public void clearHandle()   { this.handle = IntPtr.Zero; }
 
         public bool isValid()
         {
