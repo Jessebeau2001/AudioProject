@@ -60,7 +60,7 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 5185844861293946928}
+  - {fileID: 667200274311127200}
   MinDistance: 0
   MaxDistance: 0
   Length: 381299
@@ -431,14 +431,13 @@ MonoBehaviour:
   - {fileID: -980305696322768049}
   - {fileID: -1531150453993866426}
   - {fileID: 8353724875569184537}
-  - {fileID: 7928968756203748306}
-  - {fileID: 8362711620715307515}
+  - {fileID: 670192675662782474}
   EditorParameters: []
   MasterBanks:
   - {fileID: 2569359614541006680}
   StringsBanks:
   - {fileID: 1944459682964787236}
-  stringsBankWriteTime: 637423342221202752
+  stringsBankWriteTime: 637423347686756124
   cacheVersion: 5
 --- !u!114 &107488475527236070
 MonoBehaviour:
@@ -463,6 +462,49 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2000
+--- !u!114 &667200274311127200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Roomtone/Transition
+  m_EditorClassIdentifier: 
+  Name: Transition
+  Min: 0
+  Max: 4
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
+--- !u!114 &670192675662782474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SingleSounds/DoorLocked
+  m_EditorClassIdentifier: 
+  Path: event:/SingleSounds/DoorLocked
+  guid: ca290f3cd706874ba2c48f2443cc4834
+  Banks:
+  - {fileID: 2569359614541006680}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 603
 --- !u!114 &1010046320348696425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,12 +542,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD/AudioProject/Build/Desktop/Master.strings.bank
   Name: Master.strings
-  lastModified: 637423342221202752
+  lastModified: 637423347686756124
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1060
+    Value: 1024
   Exists: 1
+--- !u!114 &2130808839462155741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Roomtone/Transition
+  m_EditorClassIdentifier: 
+  Name: Transition
+  Min: 0
+  Max: 4
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 0
 --- !u!114 &2569359614541006680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,7 +582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD/AudioProject/Build/Desktop/Master.bank
   Name: Master
-  lastModified: 637423342221187875
+  lastModified: 637423347686706525
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -621,7 +683,7 @@ MonoBehaviour:
   ID:
     data1: 0
     data2: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &7384724844602018793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -679,8 +741,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/OBJECTS/Hospital bed
   guid: e272668cb49e15428fde87d5253efa6b
-  Banks:
-  - {fileID: 2569359614541006680}
+  Banks: []
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -725,8 +786,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/OBJECTS/Door
   guid: fbb3378e03a3234bb2b45b722df50b81
-  Banks:
-  - {fileID: 2569359614541006680}
+  Banks: []
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
