@@ -37,11 +37,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD/AudioProject/Build/Desktop/Master.strings.bank
   Name: Master.strings
-  lastModified: 637423384986309127
+  lastModified: 637423493739436245
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1024
+    Value: 1082
   Exists: 1
 --- !u!114 &-6713347535268154216
 MonoBehaviour:
@@ -59,7 +59,24 @@ MonoBehaviour:
   Min: 0
   Max: 4
   Default: 0
-  Exists: 1
+  Exists: 0
+--- !u!114 &-4547110764186424786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Roomtone/Transition
+  m_EditorClassIdentifier: 
+  Name: Transition
+  Min: 0
+  Max: 4
+  Default: 0
+  Exists: 0
 --- !u!114 &-4317468507392088992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,7 +97,7 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: -6713347535268154216}
+  - {fileID: 7012290176467693714}
   MinDistance: 0
   MaxDistance: 0
   Length: 381299
@@ -105,13 +122,54 @@ MonoBehaviour:
   - {fileID: -8558262726374661188}
   - {fileID: -4317468507392088992}
   - {fileID: 5154303739083345654}
+  - {fileID: 366929302325838055}
   EditorParameters: []
   MasterBanks:
   - {fileID: 8110523922775530501}
   StringsBanks:
   - {fileID: -7054477088268629780}
-  stringsBankWriteTime: 637423384986309127
+  stringsBankWriteTime: 637423493739436245
   cacheVersion: 4
+--- !u!114 &366929302325838055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SingleSounds/TestSoundtrack
+  m_EditorClassIdentifier: 
+  Path: event:/SingleSounds/TestSoundtrack
+  guid: c03dc3ee81666c49aa4895fa4a176405
+  Banks:
+  - {fileID: 8110523922775530501}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 98168
+--- !u!114 &688108266808036977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Roomtone/Transition
+  m_EditorClassIdentifier: 
+  Name: Transition
+  Min: 0
+  Max: 4
+  Default: 0
+  Exists: 0
 --- !u!114 &1348311910332549282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,6 +233,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 20000
+--- !u!114 &7012290176467693714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Roomtone/Transition
+  m_EditorClassIdentifier: 
+  Name: Transition
+  Min: 0
+  Max: 4
+  Default: 0
+  Exists: 1
 --- !u!114 &8110523922775530501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD/AudioProject/Build/Desktop/Master.bank
   Name: Master
-  lastModified: 637423384986264250
+  lastModified: 637423493739391600
   LoadResult: 0
   FileSizes: []
   Exists: 1

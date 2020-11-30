@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{4f5a3ab6-f757-44dc-99bf-6806110b6291}">
+		<property name="assetPath">
+			<value>Half-Life Alyx - Combine Battle (Train) Official Soundtrack Music.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>98.16816326530612</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{9e993f52-1dd2-447e-9b52-b4225eecd38c}</destination>
+		</relationship>
+	</object>
+</objects>
