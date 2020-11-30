@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="EncodableAsset" id="{256986bd-6f25-4a83-8550-f719700fe50e}">
+		<property name="assetPath">
+			<value>Objects/Screaming/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{9e993f52-1dd2-447e-9b52-b4225eecd38c}</destination>
+		</relationship>
+	</object>
+</objects>

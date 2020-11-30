@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{aae53b37-75e9-47c4-957c-a874e012a18c}">
+		<property name="assetPath">
+			<value>Objects/Screaming/SH101_Human_Female_Scream_Alien_OtherWorldly_Fienup_002.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>3.6289375000000001</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{9e993f52-1dd2-447e-9b52-b4225eecd38c}</destination>
+		</relationship>
+	</object>
+</objects>

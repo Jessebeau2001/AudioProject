@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="EncodableAsset" id="{80fa0413-24c7-4d15-9b53-c24c308485bb}">
+		<property name="assetPath">
+			<value>Roomtones/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{9e993f52-1dd2-447e-9b52-b4225eecd38c}</destination>
+		</relationship>
+	</object>
+</objects>

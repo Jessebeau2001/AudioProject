@@ -5,20 +5,42 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     private Rigidbody rb;
-    public float movementSpeed = 0.01f;
-    public float rotationSpeed = 0.5f;
+    
+    public float movementModifier = 0.01f;
+    public float turnModifier = 0.5f;
+    public bool canTurn = true;
+    public bool canMove = true;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-       BasicMovment();
-       Turning();
+        if (canMove)
+            ControllerMovement();
+            //BasicMovment();
+        
+        if (canTurn)
+            StaticTurning();
+            //RigidTurning();
     }
 
-    private void Turning() {
+    private void StaticTurning() {
+        Vector3 rotate = new Vector3();
+
+        if  (Input.GetKey(KeyCode.LeftArrow))
+            rotate += new Vector3(0, -1, 0);
+
+        if  (Input.GetKey(KeyCode.RightArrow))
+            rotate += new Vector3(0, 1, 0);
+
+        transform.Rotate(rotate * turnModifier);
+
+        rotate *= 0;
+    }
+
+    private void RigidTurning() {
         Vector3 rotate = new Vector3();
 
         if  (Input.GetKey(KeyCode.LeftArrow))
@@ -27,11 +49,12 @@ public class Movement : MonoBehaviour
         if  (Input.GetKey(KeyCode.RightArrow))
             rotate += new Vector3(0, 1, 0);
         
-        transform.Rotate(rotate * rotationSpeed);
+        //transform.Rotate(rotate * rotationSpeed);
+        rb.AddTorque(rotate * turnModifier);
         rotate *= 0;
     }
+
     private void BasicMovment() {
-        //Vector3 force = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         Vector3 force = new Vector3();
 
         if (Input.GetKey(KeyCode.W)) 
@@ -48,7 +71,19 @@ public class Movement : MonoBehaviour
 
         force.Normalize();
         //rb.AddForce(force * movementSpeed);
-        rb.AddRelativeForce(force * movementSpeed);
+        rb.AddRelativeForce(force * movementModifier);
         force *= 0;
+    }
+
+    private void ControllerMovement() {
+        Vector3 force = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+
+        force.Normalize();
+        rb.AddRelativeForce(force * movementModifier * Time.deltaTime);
+        force *= 0;
+    }
+
+    public void ToggleMovement() {
+        canMove = !canMove;
     }
 }
