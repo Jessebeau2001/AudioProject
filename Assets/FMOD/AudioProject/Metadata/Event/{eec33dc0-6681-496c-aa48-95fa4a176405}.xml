@@ -98,7 +98,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{61227452-be28-4816-97a6-0518019c998c}">
 		<property name="volume">
-			<value>-20</value>
+			<value>-16.5</value>
 		</property>
 		<property name="name">
 			<value>Audio 1</value>
@@ -117,6 +117,7 @@
 		<relationship name="effects">
 			<destination>{efa8b638-8d87-41fe-9e65-c324f25b3474}</destination>
 			<destination>{651c86d2-c38f-4387-b3d3-9acef1fb6d7c}</destination>
+			<destination>{bec91026-5573-4d44-9cc5-1b5408b2e298}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{73f033ea-1ed3-456b-8ef0-2e5bb6b976b8}" />
@@ -131,6 +132,11 @@
 	<object class="PluginEffect" id="{651c86d2-c38f-4387-b3d3-9acef1fb6d7c}">
 		<relationship name="plugin">
 			<destination>{95c5f8c2-f26a-4a43-8c02-50ec40e5dcdf}</destination>
+		</relationship>
+	</object>
+	<object class="PluginEffect" id="{bec91026-5573-4d44-9cc5-1b5408b2e298}">
+		<relationship name="plugin">
+			<destination>{71fc6975-4b0a-4b0f-acb6-8587091ab810}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{3df4b525-a130-4fbd-8784-412c17b8ba3b}" />
@@ -169,6 +175,15 @@
 			<destination>{d0eb434a-acd3-4ce3-89d8-70448d6f54a6}</destination>
 			<destination>{d07d18c8-c469-49cb-ab49-95fcfc7f9a7d}</destination>
 			<destination>{3c83aafc-1912-45cd-9750-63eda22334fa}</destination>
+		</relationship>
+	</object>
+	<object class="Plugin" id="{71fc6975-4b0a-4b0f-acb6-8587091ab810}">
+		<property name="identifier">
+			<value>Steam Audio Reverb</value>
+		</property>
+		<relationship name="pluginParameters">
+			<destination>{43ed2f79-bea4-47b1-beaf-50aaaee68fbe}</destination>
+			<destination>{624ec3ed-3d85-42dd-a0db-fb8ca09b6c3c}</destination>
 		</relationship>
 	</object>
 	<object class="BoolPluginParameter" id="{9599e6f4-5af7-45c7-b434-367069ef6405}">
@@ -242,7 +257,7 @@
 			<value>SourceRadius</value>
 		</property>
 		<property name="value">
-			<value>1</value>
+			<value>3.19999981</value>
 		</property>
 		<property name="curve">
 			<value>{(0.000000,0.100000)(1.000000,10.000000)}</value>
@@ -280,7 +295,7 @@
 			<value>IndirLevel</value>
 		</property>
 		<property name="value">
-			<value>1</value>
+			<value>4.8499999</value>
 		</property>
 		<property name="curve">
 			<value>{(0.000000,0.000000)(1.000000,10.000000)}</value>
@@ -487,6 +502,28 @@
 		<property name="value" />
 		<property name="dataType">
 			<value>-1</value>
+		</property>
+	</object>
+	<object class="BoolPluginParameter" id="{43ed2f79-bea4-47b1-beaf-50aaaee68fbe}">
+		<property name="name">
+			<value>IndirBinaural</value>
+		</property>
+		<property name="value">
+			<value>true</value>
+		</property>
+	</object>
+	<object class="IntPluginParameter" id="{624ec3ed-3d85-42dd-a0db-fb8ca09b6c3c}">
+		<property name="name">
+			<value>IndirType</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="minimumValue">
+			<value>0</value>
+		</property>
+		<property name="maximumValue">
+			<value>1</value>
 		</property>
 	</object>
 </objects>

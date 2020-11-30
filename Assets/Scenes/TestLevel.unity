@@ -579,7 +579,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &598204491
 MonoBehaviour:
@@ -733,7 +733,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -956,16 +956,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 782694199}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bff01d2ab643f5e48bc94b5675b2e7c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   distanceMod: 4
   audibleBumps: 1
-  wallAudio: {fileID: 0}
-  doorAudio: {fileID: 0}
-  bedAudio: {fileID: 0}
+  wallAudio: 
+  doorAudio: 
+  bedAudio: 
 --- !u!136 &782694204
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1148,7 +1148,7 @@ MonoBehaviour:
   StopEvent: 0
   AllowFadeout: 1
   TriggerOnce: 0
-  Preload: 0
+  Preload: 1
   Params: []
   OverrideAttenuation: 0
   OverrideMinDistance: 0
@@ -1223,7 +1223,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 930540814}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.8197308, y: 1.9536266, z: 18.625618}
+  m_LocalPosition: {x: 10.56, y: 1.9536266, z: 22.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1391,7 +1391,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1015168342
 GameObject:
@@ -1457,7 +1457,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1402648625 stripped
 GameObject:
@@ -1490,7 +1490,6 @@ GameObject:
   - component: {fileID: 1470766172}
   - component: {fileID: 1470766171}
   - component: {fileID: 1470766174}
-  - component: {fileID: 1470766175}
   m_Layer: 0
   m_Name: DoorMechanism
   m_TagString: Untagged
@@ -1510,7 +1509,7 @@ Transform:
   m_LocalScale: {x: 4, y: 0.67676, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1470766171
 BoxCollider:
@@ -1590,29 +1589,6 @@ MonoBehaviour:
   unlocked: {fileID: 0}
   currentStep: 0
   door: {fileID: 1661565719}
---- !u!114 &1470766175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1470766169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: Untagged
-  Event: event:/SingleSounds/DoorLocked
-  PlayEvent: 3
-  StopEvent: 0
-  AllowFadeout: 0
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 0
-  OverrideMaxDistance: 0
 --- !u!1 &1575651292
 GameObject:
   m_ObjectHideFlags: 0
@@ -1974,7 +1950,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3772909718829952352, guid: 8f4e4a377d98ba04a8c5faa464cfc0e0, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3772909718829952352, guid: 8f4e4a377d98ba04a8c5faa464cfc0e0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2070,6 +2046,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3772909719580871792, guid: 8f4e4a377d98ba04a8c5faa464cfc0e0, type: 3}
+    - {fileID: 3772909719565298702, guid: 8f4e4a377d98ba04a8c5faa464cfc0e0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8f4e4a377d98ba04a8c5faa464cfc0e0, type: 3}
 --- !u!1001 &1913066284941203674
 PrefabInstance:
@@ -2088,7 +2065,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1913066283199954969, guid: c2b3390a1e21dd14ab1e24a83844d93b, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1913066283199954969, guid: c2b3390a1e21dd14ab1e24a83844d93b, type: 3}
       propertyPath: m_LocalPosition.x
