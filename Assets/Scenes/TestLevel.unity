@@ -723,7 +723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4576053e6ac4964287500815ebc2f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioEngine: 0
+  audioEngine: 1
   sofaFiles: []
   currentSOFAFile: 0
   materialPreset: 0
@@ -3042,6 +3042,7 @@ GameObject:
   - component: {fileID: 1470766172}
   - component: {fileID: 1470766171}
   - component: {fileID: 1470766174}
+  - component: {fileID: 1470766175}
   m_Layer: 0
   m_Name: DoorMechanism
   m_TagString: Untagged
@@ -3132,7 +3133,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1470766169}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f84b1bde41ea5ca4ba933107a1838803, type: 3}
   m_Name: 
@@ -3141,6 +3142,29 @@ MonoBehaviour:
   unlocked: {fileID: 729043158}
   currentStep: 0
   door: {fileID: 1661565719}
+--- !u!114 &1470766175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470766169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: Untagged
+  Event: event:/SingleSounds/DoorLocked
+  PlayEvent: 3
+  StopEvent: 0
+  AllowFadeout: 0
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &1474924753
 GameObject:
   m_ObjectHideFlags: 0
@@ -4240,7 +4264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3772909718829952352, guid: 8f4e4a377d98ba04a8c5faa464cfc0e0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.72
+      value: 1.324
       objectReference: {fileID: 0}
     - target: {fileID: 3772909718829952352, guid: 8f4e4a377d98ba04a8c5faa464cfc0e0, type: 3}
       propertyPath: m_LocalPosition.z
