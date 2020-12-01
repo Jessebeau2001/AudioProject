@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   singleUse: 1
-  audioQueue: {fileID: 8300000, guid: a33f49172b248524dbf724c3507f635f, type: 3}
+  audioQueue: {fileID: 8300000, guid: c27b08af1d89e36498992dd3f65f24e6, type: 3}
   preDialogue: {fileID: 2022972659}
   mainDialogue: {fileID: 1465442646}
   isCallingOut: 0
@@ -840,7 +840,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 625538668}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -962,7 +962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69a8c9da914334c4a83f3ee8356431a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBlind: 0
+  isBlind: 1
 --- !u!1 &694552999
 GameObject:
   m_ObjectHideFlags: 0
@@ -3429,6 +3429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84b1bde41ea5ca4ba933107a1838803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioQueue: {fileID: 8300000, guid: c27b08af1d89e36498992dd3f65f24e6, type: 3}
   stepSound: {fileID: 1250720561}
   unlockDoorSound: {fileID: 729043158}
   resetSound: {fileID: 1730623305}
