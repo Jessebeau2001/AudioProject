@@ -30,7 +30,7 @@ public class Movement : MonoBehaviour
     { //Normal update for Keypress
         if (Input.GetKeyDown(KeyCode.Space) && triggerCol != null) {
             IInteractable thing = triggerCol.GetComponent(typeof(IInteractable)) as IInteractable;
-            if (thing == null) return;
+            if (thing == null || !((MonoBehaviour) thing).enabled) return;
             Debug.Log("Trying to access OBJ with Interface Interactable: " + thing.GetType().FullName);
             thing.Interact();
         }

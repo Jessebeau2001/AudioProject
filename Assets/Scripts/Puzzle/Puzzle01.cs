@@ -16,10 +16,10 @@ class Puzzle01 : PuzzleAbstract
     public override void Start() {
         base.Start();
 
-        keys[0] = KeyCode.R;
-        keys[1] = KeyCode.D;
-        keys[2] = KeyCode.F;
-        keys[3] = KeyCode.G;
+        keys[0] = KeyCode.F;
+        keys[1] = KeyCode.G;
+        keys[2] = KeyCode.D;
+        keys[3] = KeyCode.R;
     }
 
     public override void Main()
@@ -40,8 +40,13 @@ class Puzzle01 : PuzzleAbstract
         }
     }
 
-    public void OnTriggerEnter(Collider col) {
-        if (!firstInteract || afterCutscene) return;
+    public override void OnTriggerEnter(Collider col) {
+        if (afterCutscene) {
+            base.OnTriggerEnter(col);
+            return;
+        }
+
+        if (!firstInteract) return;
         firstInteract = false;
         AudioSource.PlayClipAtPoint(doorDialogue_BeforeTalkscene, transform.position);
     }

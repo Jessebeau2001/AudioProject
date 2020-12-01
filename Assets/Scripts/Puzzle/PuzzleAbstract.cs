@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 abstract class PuzzleAbstract : MonoBehaviour, IPuzzle, IInteractable
 {
+    public AudioClip audioQueue;
     private bool inProgress = false;
     private GameObject _player;  //Singletons????? example in Keep
     public GameObject player { get { return _player; } private set { _player = value; }}
@@ -32,5 +33,8 @@ abstract class PuzzleAbstract : MonoBehaviour, IPuzzle, IInteractable
     public void StopPuzzle() {
         _player.GetComponent<Movement>().canMove = true;
         inProgress = false;
+    }
+    public virtual void OnTriggerEnter(Collider col) {
+        AudioSource.PlayClipAtPoint(audioQueue, transform.position);
     }
 }
