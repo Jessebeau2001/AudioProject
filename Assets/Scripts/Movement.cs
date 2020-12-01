@@ -5,7 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     private Rigidbody rb;
-    
+    private Collider triggerCol;
     public float movementModifier = 220f;
     public float turnModifier = 1f;
     public bool canTurn = true;
@@ -16,7 +16,7 @@ public class Movement : MonoBehaviour
     }
 
     void FixedUpdate()
-    {
+    { //Fixed physics update for, u guessed it, physics
         if (canMove)
             ControllerMovement();
             //BasicMovment();
@@ -24,6 +24,16 @@ public class Movement : MonoBehaviour
         if (canTurn)
             StaticTurning();
             //RigidTurning();
+    }
+
+    void Update()
+    { //Normal update for Keypress
+        if (Input.GetKeyDown(KeyCode.Space) && triggerCol != null) {
+            IInteractable thing = triggerCol.GetComponent(typeof(IInteractable)) as IInteractable;
+            if (thing == null) return;
+            Debug.Log("Trying to access OBJ with Interface Interactable: " + thing.GetType().FullName);
+            thing.Interact();
+        }
     }
 
     private void StaticTurning() {
@@ -85,5 +95,13 @@ public class Movement : MonoBehaviour
 
     public void ToggleMovement() {
         canMove = !canMove;
+    }
+
+    void OnTriggerEnter(Collider col) {
+        triggerCol = col;
+    }
+
+    void OnTriggerExit() {
+        triggerCol = null;
     }
 }

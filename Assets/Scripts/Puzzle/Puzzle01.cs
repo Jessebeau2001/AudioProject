@@ -11,7 +11,6 @@ class Puzzle01 : PuzzleAbstract
     public bool afterCutscene = false;
     bool[] keyStates = new bool[3]; //should read steps int but cant cuz of some BS
     KeyCode[] keys = new KeyCode[4];
-    public override int steps { get { return steps; } set { steps = 4; } } //ISNT USED RN CUZ CAN JUST GET ARRAY LENGTH
     private int currentStep = 0;
     public GameObject doorAnimator;
     public override void Start() {
@@ -41,8 +40,7 @@ class Puzzle01 : PuzzleAbstract
         }
     }
 
-    public override void OnTriggerEnter(Collider col) {
-        base.OnTriggerEnter(col);
+    public void OnTriggerEnter(Collider col) {
         if (!firstInteract || afterCutscene) return;
         firstInteract = false;
         AudioSource.PlayClipAtPoint(doorDialogue_BeforeTalkscene, transform.position);
