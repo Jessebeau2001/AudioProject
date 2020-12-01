@@ -840,7 +840,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 625538668}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -963,6 +963,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBlind: 1
+--- !u!1 &626392896 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3772909719565298700, guid: 8f4e4a377d98ba04a8c5faa464cfc0e0, type: 3}
+  m_PrefabInstance: {fileID: 2111669699}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &626392900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626392896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 052d599a015141b47a4d10676f2dac29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useAllProbeBoxes: 1
+  probeBoxes: []
+  bakedProbeNames:
+  - ProbeBox1
+  bakedProbeDataSizes: ece11300
+  bakedDataSize: 1303020
+  bakedStatsFoldout: 1
+  bakeToggle: 0
+  currentStaticListenerNode: {fileID: 0}
 --- !u!1 &694552999
 GameObject:
   m_ObjectHideFlags: 0
@@ -1587,6 +1613,73 @@ Transform:
   m_Children: []
   m_Father: {fileID: 782694202}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &837081427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 837081429}
+  - component: {fileID: 837081428}
+  m_Layer: 0
+  m_Name: ProbeBox1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &837081428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837081427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9ea38fb6afe48f4d8a095ea13565fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placementStrategy: 2
+  horizontalSpacing: 5
+  heightAboveFloor: 1.5
+  maxNumTriangles: 64
+  maxOctreeDepth: 2
+  dataSize: 3611568
+  probeSpherePoints: []
+  probeSphereRadii: []
+  dataLayerInfo:
+  - name: PreAudio
+    identifier:
+      identifier: -1701317070
+      type: 0
+    size: 497078
+  - name: reverb
+    identifier:
+      identifier: 0
+      type: 2
+    size: 1303020
+  - name: MainDialogue
+    identifier:
+      identifier: -925225340
+      type: 0
+    size: 497078
+--- !u!4 &837081429
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837081427}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.88, y: 2.64, z: 16.19}
+  m_LocalScale: {x: 34, y: 5.2, z: 36.4}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &838136998
 GameObject:
@@ -2236,15 +2329,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43300f764e354d642abf0f0dbb612011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Preset: 0
+  Preset: 2
   Value:
-    LowFreqAbsorption: 0.1
-    MidFreqAbsorption: 0.2
-    HighFreqAbsorption: 0.3
+    LowFreqAbsorption: 0.05
+    MidFreqAbsorption: 0.07
+    HighFreqAbsorption: 0.08
     Scattering: 0.05
-    LowFreqTransmission: 0.1
-    MidFreqTransmission: 0.05
-    HighFreqTransmission: 0.03
+    LowFreqTransmission: 0.015
+    MidFreqTransmission: 0.002
+    HighFreqTransmission: 0.001
 --- !u!114 &996505941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3202,25 +3295,26 @@ MonoBehaviour:
   sourceRadius: 1
   occlusionSamples: 16
   directMixLevel: 1
-  reflections: 0
+  reflections: 1
   indirectBinaural: 0
   physicsBasedAttenuationForIndirect: 1
-  indirectMixLevel: 1
-  simulationType: 0
-  uniqueIdentifier: 
+  indirectMixLevel: 0.05
+  simulationType: 1
+  uniqueIdentifier: MainDialogue
   avoidSilenceDuringInit: 0
   overrideHRTFIndex: 0
   hrtfIndex: 0
   bakingRadius: 16
-  useAllProbeBoxes: 0
+  useAllProbeBoxes: 1
   probeBoxes: []
-  bakedProbeNames: []
-  bakedProbeDataSizes: 
-  bakedDataSize: 0
-  bakedStatsFoldout: 0
+  bakedProbeNames:
+  - ProbeBox1
+  bakedProbeDataSizes: b6950700
+  bakedDataSize: 497078
+  bakedStatsFoldout: 1
   bakeToggle: 0
   bakedDataIdentifier:
-    identifier: 0
+    identifier: -925225340
     type: 0
 --- !u!82 &1465442646
 AudioSource:
@@ -4291,8 +4385,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directBinaural: 1
   interpolation: 0
-  physicsBasedAttenuation: 0
-  airAbsorption: 0
+  physicsBasedAttenuation: 1
+  airAbsorption: 1
   dipoleWeight: 0
   dipolePower: 0
   occlusionMode: 3
@@ -4300,25 +4394,26 @@ MonoBehaviour:
   sourceRadius: 1
   occlusionSamples: 16
   directMixLevel: 1
-  reflections: 0
-  indirectBinaural: 0
+  reflections: 1
+  indirectBinaural: 1
   physicsBasedAttenuationForIndirect: 1
-  indirectMixLevel: 1
-  simulationType: 0
-  uniqueIdentifier: 
+  indirectMixLevel: 0.01
+  simulationType: 1
+  uniqueIdentifier: PreAudio
   avoidSilenceDuringInit: 0
   overrideHRTFIndex: 0
   hrtfIndex: 0
   bakingRadius: 16
-  useAllProbeBoxes: 0
+  useAllProbeBoxes: 1
   probeBoxes: []
-  bakedProbeNames: []
-  bakedProbeDataSizes: 
-  bakedDataSize: 0
-  bakedStatsFoldout: 0
+  bakedProbeNames:
+  - ProbeBox1
+  bakedProbeDataSizes: b6950700
+  bakedDataSize: 497078
+  bakedStatsFoldout: 1
   bakeToggle: 0
   bakedDataIdentifier:
-    identifier: 0
+    identifier: -1701317070
     type: 0
 --- !u!82 &2022972659
 AudioSource:
@@ -4746,7 +4841,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3772909718829952352, guid: 8f4e4a377d98ba04a8c5faa464cfc0e0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.78
+      value: 6.22
       objectReference: {fileID: 0}
     - target: {fileID: 3772909718829952352, guid: 8f4e4a377d98ba04a8c5faa464cfc0e0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4754,7 +4849,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3772909718829952352, guid: 8f4e4a377d98ba04a8c5faa464cfc0e0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.17
+      value: 27.47
       objectReference: {fileID: 0}
     - target: {fileID: 3772909718829952352, guid: 8f4e4a377d98ba04a8c5faa464cfc0e0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4827,6 +4922,10 @@ PrefabInstance:
     - target: {fileID: 3772909718829952359, guid: 8f4e4a377d98ba04a8c5faa464cfc0e0, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3772909719565298702, guid: 8f4e4a377d98ba04a8c5faa464cfc0e0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3772909719580871795, guid: 8f4e4a377d98ba04a8c5faa464cfc0e0, type: 3}
       propertyPath: m_Enabled

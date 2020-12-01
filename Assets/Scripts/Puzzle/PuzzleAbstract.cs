@@ -11,6 +11,10 @@ abstract class PuzzleAbstract : MonoBehaviour, IPuzzle, IInteractable
     public GameObject player { get { return _player; } private set { _player = value; }}
     // player initialized here because is the same for every class that inherents from this
     public virtual void Start() {
+        //player = GameObject.Find("Player"); ||| this code was here but moved to Awake
+    }
+
+    public void Awake() {
         player = GameObject.Find("Player");
     }
 

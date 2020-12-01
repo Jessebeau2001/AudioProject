@@ -48,7 +48,9 @@ class Puzzle01 : PuzzleAbstract
 
         if (!firstInteract) return;
         firstInteract = false;
-        AudioSource.PlayClipAtPoint(doorDialogue_BeforeTalkscene, transform.position);
+        AudioSource src = player.AddComponent(typeof(AudioSource)) as AudioSource;
+        src.clip = doorDialogue_BeforeTalkscene;
+        src.Play();
     }
 
     public void Completed() {
