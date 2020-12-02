@@ -29,13 +29,9 @@ public class Footsteps : MonoBehaviour
 
         if (CurrentStepInterval < 0) {
             CurrentStepInterval += StandardStepInterval;
-            src.pitch = (float) RandomDouble(0.8, 1.2);
+            src.pitch = (float) Utils.RandomDouble(0.8, 1.2);
             src.clip = StepSounds[rnd.Next(StepSounds.Length)];
             src.Play();
         }
-    }
-
-    public double RandomDouble(double min, double max) {
-        return rnd.NextDouble() * (max - min) + min;
     }
 }
