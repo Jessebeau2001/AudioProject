@@ -12,6 +12,8 @@ class Puzzle01 : PuzzleAbstract
     bool[] keyStates = new bool[3]; //should read steps int but cant cuz of some BS
     KeyCode[] keys = new KeyCode[4];
     private int currentStep = 0;
+    private int mistakeIndex = 0;
+    public int maxMistakes = 4;
     public GameObject doorAnimator;
     public override void Start() {
         base.Start();
@@ -36,6 +38,7 @@ class Puzzle01 : PuzzleAbstract
         } else if (Input.anyKeyDown) {
             Debug.Log("Oops, thats a wrong one there mate should be " + currentStep + " / " + keys[currentStep]);
             resetSound.Play();
+            // MakeMistake(); //Can use if we decide to implement door tutorial line
             currentStep = 0;
         }
     }
@@ -57,5 +60,13 @@ class Puzzle01 : PuzzleAbstract
         doorAnimator.GetComponent<Animator>().SetBool("IsClosed", false);
         StopPuzzle();
         GameObject.Destroy(this);
+    }
+
+    private void MakeMistake() {
+        mistakeIndex++;
+
+        if (mistakeIndex > maxMistakes) {
+            //Play the turial line audio here (Can be static source cuz player cant move at this point)
+        }
     }
 }
