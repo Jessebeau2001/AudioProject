@@ -1805,7 +1805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e280b2b71156504197234f6cb342305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StepSounds:
+  stepSounds:
   - {fileID: 8300000, guid: 9ed43cddca513e94499e55cf521eb318, type: 3}
   - {fileID: 8300000, guid: 0317b68ca7553584984e8f2df770fff8, type: 3}
   - {fileID: 8300000, guid: f727929445900bb4686ad5dbf99bde48, type: 3}
