@@ -1675,6 +1675,7 @@ GameObject:
   m_Component:
   - component: {fileID: 812488299}
   - component: {fileID: 812488300}
+  - component: {fileID: 812488301}
   m_Layer: 0
   m_Name: Footstep
   m_TagString: Untagged
@@ -1792,6 +1793,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &812488301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812488298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e280b2b71156504197234f6cb342305, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StepSounds:
+  - {fileID: 8300000, guid: 9ed43cddca513e94499e55cf521eb318, type: 3}
+  - {fileID: 8300000, guid: 0317b68ca7553584984e8f2df770fff8, type: 3}
+  - {fileID: 8300000, guid: f727929445900bb4686ad5dbf99bde48, type: 3}
+  - {fileID: 8300000, guid: f9e9174ef16e63545948c4a84fc75edd, type: 3}
+  StandardStepInterval: 150
 --- !u!1 &837081427
 GameObject:
   m_ObjectHideFlags: 0

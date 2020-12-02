@@ -5,24 +5,15 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Movement : MonoBehaviour
 {
-    private readonly System.Random random = new System.Random();
-    private AudioSource footstep;
     private Rigidbody rb;
     private Collider triggerCol;
     public float movementModifier = 220f;
     public float turnModifier = 1f;
-    public int StandardStepInterval = 100;
-    private int CurrentStepInterval;
     public bool canTurn = true;
     public bool canMove = true;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        Transform footstepObj = transform.Find("Footstep");
-        if (footstepObj == null) throw new System.Exception("Footstep SoundSource could not be found");
-            else footstep = footstepObj.GetComponent<AudioSource>();
-
-        CurrentStepInterval = StandardStepInterval;
     }
 
     void FixedUpdate()
@@ -34,8 +25,6 @@ public class Movement : MonoBehaviour
         if (canTurn)
             StaticTurning();
             //RigidTurning();
-
-        Footsteps();
     }
 
     void Update()
@@ -47,23 +36,6 @@ public class Movement : MonoBehaviour
             thing.Interact();
         }
     }
-
-    void Footsteps() { 
-        float velocity = rb.velocity.magnitude;
-        CurrentStepInterval -= (int) Mathf.Floor(velocity);
-        Debug.Log(CurrentStepInterval);
-
-        if (CurrentStepInterval < 0) {
-            CurrentStepInterval += StandardStepInterval;
-            footstep.pitch = (float) RandomDouble(0.8, 1.2);
-            footstep.Play();
-        }
-    }
-
-    public double RandomDouble(double min, double max) {
-        return random.NextDouble() * (max - min) + min;
-    }
-
     private void StaticTurning() {
         Vector3 rotate = new Vector3();
 
