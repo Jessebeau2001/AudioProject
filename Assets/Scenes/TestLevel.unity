@@ -4578,11 +4578,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioQueue: {fileID: 8300000, guid: c27b08af1d89e36498992dd3f65f24e6, type: 3}
-  stepSound: {fileID: 1250720561}
+  inProgress: 0
   unlockDoorSound: {fileID: 729043158}
-  resetSound: {fileID: 1730623305}
   doorDialogue_BeforeTalkscene: {fileID: 8300000, guid: 476fb88c154e76f4a866f1ad082d4b27, type: 3}
+  puzzleExplaination: {fileID: 8300000, guid: e8969da401d6e4e498d1caeb523c751f, type: 3}
+  failDialogue:
+  - {fileID: 8300000, guid: 412a402bd9dff684a82a7e525a9141bb, type: 3}
+  - {fileID: 8300000, guid: bc3feec271db5704ea7e5d802ffaa357, type: 3}
   afterCutscene: 0
+  keySounds:
+  - {fileID: 8300000, guid: e47832a8d597b284bae19f95563d4d57, type: 3}
+  - {fileID: 8300000, guid: 926d3e458723bf14ca8667d829aa6187, type: 3}
+  - {fileID: 8300000, guid: 6135b01e306d764408677ab0db7599f8, type: 3}
+  - {fileID: 8300000, guid: 5cf9860c172e5fe4f87bd5d6877db160, type: 3}
   maxMistakes: 4
   doorAnimator: {fileID: 1661565719}
 --- !u!1 &1474924753
@@ -5769,7 +5777,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3772909718829952352, guid: 8f4e4a377d98ba04a8c5faa464cfc0e0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.16
+      value: 6.91
       objectReference: {fileID: 0}
     - target: {fileID: 3772909718829952352, guid: 8f4e4a377d98ba04a8c5faa464cfc0e0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5777,7 +5785,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3772909718829952352, guid: 8f4e4a377d98ba04a8c5faa464cfc0e0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.2
+      value: 24.06
       objectReference: {fileID: 0}
     - target: {fileID: 3772909718829952352, guid: 8f4e4a377d98ba04a8c5faa464cfc0e0, type: 3}
       propertyPath: m_LocalRotation.w

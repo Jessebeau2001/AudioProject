@@ -3,15 +3,15 @@ using UnityEngine;
 
 class Puzzle01 : PuzzleAbstract
 {
-    public AudioSource stepSound;
     public AudioSource unlockDoorSound;
-    public AudioSource resetSound;
     public AudioClip doorDialogue_BeforeTalkscene;
     public AudioClip puzzleExplaination;
+    public AudioClip[] failDialogue;
     private bool firstInteract = true;
     public bool afterCutscene = false;
     bool[] keyStates = new bool[3]; //should read steps int but cant cuz of some BS
     KeyCode[] keys = new KeyCode[4];
+    public AudioClip[] keySounds = new AudioClip[4];
     private int currentStep = 0;
     private int mistakeIndex = 0;
     public int maxMistakes = 4;
@@ -27,20 +27,32 @@ class Puzzle01 : PuzzleAbstract
 
     public override void Main()
     {
-        if (currentStep >= 4) { 
-            Debug.Log("Well done, you completed the pzuzzle");
-            Completed();
-            unlockDoorSound.Play();
-            //PUZZLE COMPLETE CODE HERE
-        } else if (Input.GetKeyDown(keys[currentStep])) {
-            currentStep++;
-            Debug.Log("Correct next should be: "  + currentStep);
-            stepSound.Play();
-        } else if (Input.anyKeyDown) {
-            Debug.Log("Oops, thats a wrong one there mate should be " + currentStep + " / " + keys[currentStep]);
-            resetSound.Play();
-            // MakeMistake(); //Can use if we decide to implement door tutorial line
-            currentStep = 0;
+        if (Input.anyKeyDown) {
+            KeyChecker();
+        }
+    }
+
+    void KeyChecker() {
+        KeyCode pressedKey;
+
+        for (int i = 0; i < keys.Length; i++) {
+            if (Input.GetKeyDown(keys[i])) {
+                pressedKey = keys[i];
+                AudioSource.PlayClipAtPoint(keySounds[i], player.transform.position);
+                
+                if (pressedKey == keys[currentStep]) {
+                    Debug.Log("Correct key pressed");
+                    currentStep++;
+                } else {
+                    Debug.Log("Mistakes have been made");
+                    MakeMistake();
+                }
+
+                if (currentStep >= 4){
+                    Debug.Log("Puzzle Complete");
+                    Completed();
+                }
+            }
         }
     }
 
@@ -64,10 +76,15 @@ class Puzzle01 : PuzzleAbstract
     }
 
     private void MakeMistake() {
+        AudioClip src = Utils.RandomArrayEntry(failDialogue);
+        currentStep = 0;
+        
         mistakeIndex++;
-
-        if (mistakeIndex > maxMistakes) {
-            //Play the turial line audio here (Can be static source cuz player cant move at this point)
+        if (mistakeIndex >= maxMistakes) {
+            inProgress = false;
+            mistakeIndex = 0;
+            AudioSource.PlayClipAtPoint(src, player.transform.position);
+            StartCoroutine(StartKeyDetection(src.length));
         }
     }
 

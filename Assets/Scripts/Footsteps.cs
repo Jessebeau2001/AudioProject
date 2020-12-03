@@ -25,7 +25,6 @@ public class Footsteps : MonoBehaviour
     void FixedFootstep() { 
         float velocity = rb.velocity.magnitude;
         CurrentStepInterval -= (int) Mathf.Floor(velocity);
-        Debug.Log(CurrentStepInterval);
 
         if (CurrentStepInterval < 0) {
             CurrentStepInterval += StandardStepInterval;
