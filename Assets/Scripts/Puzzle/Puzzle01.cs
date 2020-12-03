@@ -3,13 +3,11 @@ using UnityEngine;
 
 class Puzzle01 : PuzzleAbstract
 {
-    public AudioSource unlockDoorSound;
     public AudioClip doorDialogue_BeforeTalkscene;
     public AudioClip puzzleExplaination;
     public AudioClip[] failDialogue;
     private bool firstInteract = true;
     public bool afterCutscene = false;
-    bool[] keyStates = new bool[3]; //should read steps int but cant cuz of some BS
     KeyCode[] keys = new KeyCode[4];
     public AudioClip[] keySounds = new AudioClip[4];
     private int currentStep = 0;
