@@ -11,6 +11,8 @@ abstract class PuzzleAbstract : MonoBehaviour, IPuzzle, IInteractable
     private GameObject _player;  //Singletons????? example in Keep
     public GameObject player { get { return _player; } private set { _player = value; }}
     // player initialized here because is the same for every class that inherents from this
+
+    private bool hasInteracted = false;
     public virtual void Start() {
         //player = GameObject.Find("Player"); ||| this code was here but moved to Awake
     }
@@ -27,6 +29,8 @@ abstract class PuzzleAbstract : MonoBehaviour, IPuzzle, IInteractable
     public abstract void Main();
 
     public virtual void Interact() {
+        if (hasInteracted) return;
+        hasInteracted = true;
         StartPuzzle();
     }
     
