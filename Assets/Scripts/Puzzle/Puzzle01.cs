@@ -7,6 +7,7 @@ class Puzzle01 : PuzzleAbstract
     public AudioSource unlockDoorSound;
     public AudioSource resetSound;
     public AudioClip doorDialogue_BeforeTalkscene;
+    public AudioClip puzzleExplaination;
     private bool firstInteract = true;
     public bool afterCutscene = false;
     bool[] keyStates = new bool[3]; //should read steps int but cant cuz of some BS
@@ -68,5 +69,18 @@ class Puzzle01 : PuzzleAbstract
         if (mistakeIndex > maxMistakes) {
             //Play the turial line audio here (Can be static source cuz player cant move at this point)
         }
+    }
+
+    public override void StartPuzzle()
+    {
+        base.StartPuzzle();
+        inProgress = false;
+        AudioSource.PlayClipAtPoint(puzzleExplaination, player.transform.position);
+        StartCoroutine(StartKeyDetection(puzzleExplaination.length));
+    }
+
+    IEnumerator StartKeyDetection(float delay) {
+        yield return new WaitForSeconds(delay);
+        inProgress = true;
     }
 }

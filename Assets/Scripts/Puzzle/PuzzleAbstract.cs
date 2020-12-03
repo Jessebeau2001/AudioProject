@@ -6,7 +6,7 @@ using UnityEngine;
 abstract class PuzzleAbstract : MonoBehaviour, IPuzzle, IInteractable
 {
     public AudioClip audioQueue;
-    private bool inProgress = false;
+    public bool inProgress = false;
     private GameObject _player;  //Singletons????? example in Keep
     public GameObject player { get { return _player; } private set { _player = value; }}
     // player initialized here because is the same for every class that inherents from this
@@ -29,7 +29,7 @@ abstract class PuzzleAbstract : MonoBehaviour, IPuzzle, IInteractable
         StartPuzzle();
     }
     
-    public void StartPuzzle() {
+    public virtual void StartPuzzle() {
         _player.GetComponent<Movement>().canMove = false; //should I use private or public player?
         inProgress = true;
     }
