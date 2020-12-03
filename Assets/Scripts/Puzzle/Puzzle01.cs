@@ -6,6 +6,7 @@ class Puzzle01 : PuzzleAbstract
 {
     public AudioClip doorDialogue_BeforeTalkscene;
     public AudioClip puzzleExplaination;
+    public AudioClip doorOpeningSound;
     public AudioClip[] failDialogue;
     private bool firstInteract = true;
     public bool afterCutscene = false;
@@ -79,6 +80,7 @@ class Puzzle01 : PuzzleAbstract
     public void Completed() {
         doorAnimator.GetComponent<Animator>().SetBool("IsClosed", false);
         StopPuzzle();
+        StartCoroutine(SceduleSound(1, doorOpeningSound, player.transform.position));
         StartCoroutine(EndGame()); //stops the game here for the beta
     }
 
@@ -106,6 +108,11 @@ class Puzzle01 : PuzzleAbstract
     IEnumerator StartKeyDetection(float delay) {
         yield return new WaitForSeconds(delay);
         inProgress = true;
+    }
+
+    IEnumerator SceduleSound(float delay, AudioClip src, Vector3 pos) {
+        yield return new WaitForSeconds(delay);
+        AudioSource.PlayClipAtPoint(src, pos);
     }
 
     IEnumerator EndGame() {
