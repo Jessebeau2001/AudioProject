@@ -433,6 +433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   singleUse: 1
   audioQueue: {fileID: 8300000, guid: c27b08af1d89e36498992dd3f65f24e6, type: 3}
+  audioQueueExit: {fileID: 8300000, guid: c53316eadcfea2648a7035d8d6dffb5f, type: 3}
   preDialogue: {fileID: 2022972659}
   mainDialogue: {fileID: 1465442646}
   isCallingOut: 0
@@ -4820,6 +4821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioQueue: {fileID: 8300000, guid: c27b08af1d89e36498992dd3f65f24e6, type: 3}
+  audioQueueExit: {fileID: 8300000, guid: c53316eadcfea2648a7035d8d6dffb5f, type: 3}
   inProgress: 0
   doorDialogue_BeforeTalkscene: {fileID: 8300000, guid: 476fb88c154e76f4a866f1ad082d4b27, type: 3}
   puzzleExplaination: {fileID: 8300000, guid: e8969da401d6e4e498d1caeb523c751f, type: 3}

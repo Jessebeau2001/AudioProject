@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 class Puzzle01 : PuzzleAbstract
 {
@@ -67,10 +68,18 @@ class Puzzle01 : PuzzleAbstract
         src.Play();
     }
 
+    public override void OnTriggerExit(Collider col)
+    {
+        if (afterCutscene) {
+            base.OnTriggerExit(col);
+            return;
+        }
+    }
+
     public void Completed() {
         doorAnimator.GetComponent<Animator>().SetBool("IsClosed", false);
         StopPuzzle();
-        GameObject.Destroy(this);
+        StartCoroutine(EndGame()); //stops the game here for the beta
     }
 
     private void MakeMistake() {
@@ -97,5 +106,11 @@ class Puzzle01 : PuzzleAbstract
     IEnumerator StartKeyDetection(float delay) {
         yield return new WaitForSeconds(delay);
         inProgress = true;
+    }
+
+    IEnumerator EndGame() {
+        yield return new WaitForSeconds(4);
+        SceneManager.LoadScene(2);
+        GameObject.Destroy(this);
     }
 }

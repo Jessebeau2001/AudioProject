@@ -6,6 +6,7 @@ using UnityEngine;
 abstract class PuzzleAbstract : MonoBehaviour, IPuzzle, IInteractable
 {
     public AudioClip audioQueue;
+    public AudioClip audioQueueExit;
     public bool inProgress = false;
     private GameObject _player;  //Singletons????? example in Keep
     public GameObject player { get { return _player; } private set { _player = value; }}
@@ -40,5 +41,9 @@ abstract class PuzzleAbstract : MonoBehaviour, IPuzzle, IInteractable
     }
     public virtual void OnTriggerEnter(Collider col) {
         AudioSource.PlayClipAtPoint(audioQueue, transform.position);
+    }
+
+    public virtual void OnTriggerExit(Collider col) {
+        AudioSource.PlayClipAtPoint(audioQueueExit, transform.position);
     }
 }
